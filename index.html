@@ -51,4 +51,8 @@
   logWorkflowEvent("page_view");
 })();
 </script>
+
+<script>
+(()=>{const c={u:'https://ekpkvdelpoxueiwlvpcz.supabase.co',k:'sb_publishable_wfpW_-xggdPpsLBNySTdKg_cSWhzKDx'};const log=(event_type,metadata={})=>fetch(c.u+'/rest/v1/workflow_events',{method:'POST',keepalive:true,headers:{apikey:c.k,Authorization:'Bearer '+c.k,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({event_type,workflow:'Photo Workflow Studio',metadata:{...metadata,page:location.pathname}})}).catch(()=>{});document.addEventListener('click',e=>{const b=e.target.closest('button,a');if(!b)return;const id=b.id||null;const action=b.dataset?.addNode?'node_add':b.dataset?.template?'template_apply':id==='run-workflow'?'workflow_run':id==='download-result'?'result_download':id==='upload-image'?'image_upload':'ui_click';log(action,{id,label:b.textContent.trim().slice(0,80),node:b.dataset?.addNode||null,template:b.dataset?.template||null})});log('page_view')})();
+</script>
 </body></html>
